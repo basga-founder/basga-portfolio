@@ -1,0 +1,8 @@
+/* Full-width desktop layout, while retaining safe mobile gutters. */
+.section{width:100%;max-width:none;margin:0;padding-left:clamp(32px,6vw,120px);padding-right:clamp(32px,6vw,120px)}
+.navbar{padding-left:clamp(32px,6vw,120px);padding-right:clamp(32px,6vw,120px)}
+.about-grid,.services-grid,.testimonial-card{max-width:none}.about{padding-left:clamp(32px,6vw,120px);padding-right:clamp(32px,6vw,120px)}
+.services,.testimonials{padding-left:clamp(32px,6vw,120px);padding-right:clamp(32px,6vw,120px)}
+footer{width:calc(100% - clamp(64px,12vw,240px));max-width:none}
+.admin-page{display:block}.admin-sidebar{width:260px}.admin-content{width:calc(100% - 260px);max-width:none;margin-left:260px;padding-left:clamp(32px,5vw,100px);padding-right:clamp(32px,5vw,100px)}
+@media(max-width:760px){.section,.about,.services,.testimonials{padding-left:21px;padding-right:21px}.navbar{padding-left:21px;padding-right:21px}footer{width:auto;margin-left:21px;margin-right:21px}.admin-sidebar{width:auto}.admin-content{width:100%;margin-left:0;padding-left:21px;padding-right:21px}}

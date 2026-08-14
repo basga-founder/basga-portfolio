@@ -1,0 +1,8 @@
+<script setup>
+import { computed, onMounted, onUnmounted, ref } from 'vue'
+import { profile,socialMedia } from '../data/portfolio'
+const roles=['Teacher','Web Developer','Software Developer'], index=ref(0),text=ref(''),deleting=ref(false);let timer
+const tick=()=>{let word=roles[index.value];text.value=deleting.value?word.slice(0,text.value.length-1):word.slice(0,text.value.length+1);let wait=deleting.value?55:95;if(!deleting.value&&text.value===word){wait=1300;deleting.value=true}else if(deleting.value&&!text.value){deleting.value=false;index.value=(index.value+1)%roles.length;wait=250}timer=setTimeout(tick,wait)}
+onMounted(tick);onUnmounted(()=>clearTimeout(timer))
+</script>
+<template><section id="home" class="hero section"><div class="orb orb-one"/><div class="orb orb-two"/><div class="hero-copy reveal"><p class="eyebrow"><span/>AVAILABLE FOR COLLABORATION</p><h1>Hi, Saya <em>Mohammad<br/>Basry Gaffar</em></h1><p class="typed">{{text}}<i/></p><p class="hero-bio">{{profile.bio}}</p><div class="hero-buttons"><a class="button primary" href="#projects">Lihat Portfolio <i class="fa-solid fa-arrow-right"/></a><a class="button ghost" href="#contact">Hubungi Saya</a></div><div class="socials"><a v-for="[icon,name,url] in socialMedia" :key="name" :href="url" :aria-label="name"><i :class="icon"/></a></div></div><div class="hero-photo reveal delay"><div class="photo-frame"><img :src="profile.image" :alt="profile.name"/><span class="badge"><i class="fa-solid fa-sparkles"/> Building with purpose</span></div></div><a href="#about" class="scroll-hint">SCROLL TO EXPLORE <i class="fa-solid fa-arrow-down"/></a></section></template>
