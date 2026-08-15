@@ -1,0 +1,201 @@
+/* Reference-inspired presentation: preserves the existing Basga color tokens and content structure. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .42;
+  background-image:
+    linear-gradient(var(--line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line) 1px, transparent 1px);
+  background-size: 72px 72px;
+  mask-image: linear-gradient(to bottom, #000 0%, #000 40%, transparent 82%);
+}
+
+.navbar {
+  max-width: 1180px;
+  left: 50%;
+  right: auto;
+  width: calc(100% - 40px);
+  height: 76px;
+  padding: 0 22px;
+  transform: translateX(-50%);
+}
+
+.navbar.scrolled {
+  top: 12px;
+  height: 58px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: color-mix(in srgb, var(--bg) 88%, transparent);
+}
+
+.brand {
+  letter-spacing: -1px;
+}
+
+nav {
+  gap: clamp(16px, 2vw, 30px);
+}
+
+.hero {
+  min-height: 100vh;
+  grid-template-columns: 1.08fr .92fr;
+}
+
+.hero::after {
+  content: "";
+  position: absolute;
+  width: min(43vw, 560px);
+  height: min(43vw, 560px);
+  right: 3%;
+  top: 16%;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  box-shadow: 0 0 0 46px color-mix(in srgb, var(--line) 35%, transparent),
+              0 0 0 92px color-mix(in srgb, var(--line) 20%, transparent);
+  pointer-events: none;
+}
+
+.hero-copy {
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  max-width: 680px;
+  font-size: clamp(44px, 6.2vw, 86px);
+  letter-spacing: -5px;
+}
+
+.hero h1 em {
+  display: block;
+  color: transparent;
+  font-family: inherit;
+  font-style: normal;
+  -webkit-text-stroke: 1px var(--accent);
+  text-stroke: 1px var(--accent);
+}
+
+.hero-bio {
+  max-width: 520px;
+  line-height: 1.8;
+}
+
+.typed {
+  min-height: 27px;
+  font-size: 13px;
+  letter-spacing: .03em;
+}
+
+.button {
+  min-height: 51px;
+  padding: 14px 21px;
+  border-radius: 10px;
+}
+
+.hero-photo {
+  z-index: 1;
+  justify-self: center;
+  position: relative;
+}
+
+.photo-frame {
+  width: min(390px, 33vw);
+  aspect-ratio: .78;
+  padding: 1px;
+  border: 1px solid var(--line);
+  border-radius: 28px;
+  background: linear-gradient(145deg, color-mix(in srgb, var(--accent) 28%, transparent), color-mix(in srgb, var(--accent2) 22%, transparent));
+  box-shadow: 0 30px 70px color-mix(in srgb, var(--bg) 70%, transparent);
+  overflow: visible;
+}
+
+.photo-frame::before {
+  content: "";
+  position: absolute;
+  inset: -14px;
+  border-radius: 34px;
+  border: 1px solid color-mix(in srgb, var(--accent2) 30%, transparent);
+  transform: rotate(-5deg);
+  z-index: -1;
+}
+
+.photo-frame img {
+  border-radius: 27px;
+  filter: saturate(.9) contrast(1.05);
+}
+
+.badge {
+  left: -52px;
+  bottom: 24px;
+  padding: 14px 17px;
+  border-radius: 13px;
+  font-size: 10px;
+}
+
+.section-title h2,
+.split h2 {
+  letter-spacing: -3px;
+}
+
+.service-card,
+.skill-card,
+.testimonial-card,
+.project-image {
+  border-radius: 14px;
+}
+
+.service-card,
+.skill-card {
+  background: color-mix(in srgb, var(--surface) 86%, transparent);
+}
+
+@media (max-width: 760px) {
+  body::before {
+    background-size: 44px 44px;
+  }
+
+  .navbar {
+    width: 100%;
+    left: 0;
+    transform: none;
+    padding: 0 21px;
+  }
+
+  .navbar.scrolled {
+    top: 0;
+    width: 100%;
+    border-right: 0;
+    border-left: 0;
+    border-radius: 0;
+  }
+
+  .hero {
+    min-height: auto;
+  }
+
+  .hero h1 {
+    font-size: clamp(43px, 14vw, 65px);
+    letter-spacing: -3px;
+  }
+
+  .hero h1 em {
+    -webkit-text-stroke-width: 1px;
+  }
+
+  .hero::after {
+    display: none;
+  }
+
+  .photo-frame {
+    width: min(300px, 78vw);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .photo-frame::before {
+    transform: none;
+  }
+}
