@@ -5,6 +5,7 @@ import './admin.css'
 import './layout-full.css'
 import './brand.css'
 import './enhancements.css'
+import './reference-style.css'
 import App from './App.vue'
 import router from './router'
 
